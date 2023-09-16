@@ -4,31 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vacation Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+            background-color: darkblue;
+            color: white;
+        }
+        h2 {
+            color: white;
+        }
+        label, p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        @media only screen and (min-width: 768px) {
+            input {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <h2>Vacation Calculator</h2>
-    
-    <label for="daysPerYear">Days of Vacation Per Year:</label>
-    <input type="number" id="daysPerYear" placeholder="e.g. 10">
-    <br><br>
+<h2>Vacation Calculator</h2>
 
-    <label for="costPerNight">Cost Per Night ($):</label>
-    <input type="number" id="costPerNight" placeholder="e.g. 120">
-    <br><br>
+<label for="daysPerYear">Days of Vacation Per Year:</label>
+<input type="number" id="daysPerYear" placeholder="e.g. 10">
+<br>
 
-    <label for="foodPerDay">Cost of Food Per Day ($):</label>
-    <input type="number" id="foodPerDay" placeholder="e.g. 50">
-    <br><br>
+<label for="costPerNight">Cost Per Night ($):</label>
+<input type="number" id="costPerNight" placeholder="e.g. 120">
+<br>
 
-    <label for="entertainmentPerDay">Cost of Entertainment Per Day ($):</label>
-    <input type="number" id="entertainmentPerDay" placeholder="e.g. 40">
-    <br><br>
+<label for="foodPerDay">Cost of Food Per Day ($):</label>
+<input type="number" id="foodPerDay" placeholder="e.g. 50">
+<br>
 
-    <button onclick="calculateVacationCost()">Calculate Costs</button>
-    
+<label for="entertainmentPerDay">Cost of Entertainment Per Day ($):</label>
+<input type="number" id="entertainmentPerDay" placeholder="e.g. 40">
+<br>
 
-    <!-- ... Other code above -->
+<button onclick="calculateVacationCost()">Calculate Costs</button>
 
 <h3>Results:</h3>
 <p>Yearly Cost: $<span id="yearlyCost">0</span></p>
@@ -39,65 +79,23 @@
 <p>Cost over 25 years: $<span id="result25">0</span></p>
 <p>Cost over 30 years: $<span id="result30">0</span></p>
 
-<!-- ... Rest of the code below -->
+<script>
+    function calculateVacationCost() {
+        let days = parseFloat(document.getElementById('daysPerYear').value);
+        let nightlyCost = parseFloat(document.getElementById('costPerNight').value);
+        let foodCost = parseFloat(document.getElementById('foodPerDay').value);
+        let entertainmentCost = parseFloat(document.getElementById('entertainmentPerDay').value);
 
-
-    <script>
-function calculateVacationCost() {
-    let days = parseFloat(document.getElementById('daysPerYear').value);
-    let nightlyCost = parseFloat(document.getElementById('costPerNight').value);
-    let foodCost = parseFloat(document.getElementById('foodPerDay').value);
-    let entertainmentCost = parseFloat(document.getElementById('entertainmentPerDay').value);
-
-    let yearlyCost = days * (nightlyCost + foodCost + entertainmentCost);
-    document.getElementById('yearlyCost').innerText = yearlyCost.toFixed(2);
-
-    document.getElementById('result5').innerText = (yearlyCost * 5).toFixed(2);
-    document.getElementById('result10').innerText = (yearlyCost * 10).toFixed(2);
-    document.getElementById('result15').innerText = (yearlyCost * 15).toFixed(2);
-    document.getElementById('result20').innerText = (yearlyCost * 20).toFixed(2);
-    document.getElementById('result25').innerText = (yearlyCost * 25).toFixed(2);
-    document.getElementById('result30').innerText = (yearlyCost * 30).toFixed(2);
-}
-
-
-    </script>
-    
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    padding: 40px;
-    text-align: center;
-    background-color: #f4f4f4;
-}
-h2 {
-    color: #333;
-}
-label, p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-input {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-}
-button:hover {
-    background-color: #0056b3;
-}
-
-    </style>
+        let yearlyCost = days * (nightlyCost + foodCost + entertainmentCost);
+        document.getElementById('yearlyCost').innerText = yearlyCost.toFixed(2);
+        document.getElementById('result5').innerText = (yearlyCost * 5).toFixed(2);
+        document.getElementById('result10').innerText = (yearlyCost * 10).toFixed(2);
+        document.getElementById('result15').innerText = (yearlyCost * 15).toFixed(2);
+        document.getElementById('result20').innerText = (yearlyCost * 20).toFixed(2);
+        document.getElementById('result25').innerText = (yearlyCost * 25).toFixed(2);
+        document.getElementById('result30').innerText = (yearlyCost * 30).toFixed(2);
+    }
+</script>
 
 </body>
 </html>
